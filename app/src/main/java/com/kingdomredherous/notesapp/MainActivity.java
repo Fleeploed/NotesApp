@@ -1,6 +1,7 @@
 package com.kingdomredherous.notesapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +22,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int INTENT_EDIT = 200;
+    private static final int INTENT_ADD = 100;
     FloatingActionButton fab;
     SwipeRefreshLayout swipeRefresh;
     RecyclerView recyclerView;
     MyAdapter myAdapter;
     MyAdapter.ItemClickListener itemClickListener;
     List<Note> notes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.add);
         fab.setOnClickListener(view ->
-                startActivity(new Intent(this, EditorActivity.class)));
+                startActivityForResult(new Intent(this, EditorActivity.class),
+                        INTENT_ADD)
+        );
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
 
@@ -42,9 +48,26 @@ public class MainActivity extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(this::callNoteData);
 
         itemClickListener = (((view, position) -> {
+            int id = notes.get(position).getId();
             String title = notes.get(position).getTitle();
-            Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
+            String popis = notes.get(position).getPopis();
+
+            Intent intent = new Intent(this, EditorActivity.class);
+            intent.putExtra("id", id);
+            intent.putExtra("title", title);
+            intent.putExtra("popis", popis);
+            startActivityForResult(intent, INTENT_EDIT);
         }));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == INTENT_ADD && resultCode == RESULT_OK) {
+            callNoteData();
+        } else if (requestCode==INTENT_EDIT && resultCode == RESULT_OK){
+            callNoteData();
+        }
     }
 
     private void callNoteData() {
@@ -52,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Call<List<Note>> call = api.getNote();
         call.enqueue(new Callback<List<Note>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Note>> call,@NonNull Response<List<Note>> response) {
+            public void onResponse(@NonNull Call<List<Note>> call, @NonNull Response<List<Note>> response) {
                 loadData(response.body());
                 swipeRefresh.setRefreshing(false);
             }
@@ -64,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadData(List<Note> notes){
+    private void loadData(List<Note> notes) {
         recyclerView = findViewById(R.id.recycler_view);
-        myAdapter = new MyAdapter(notes,this,itemClickListener);
+        myAdapter = new MyAdapter(notes, this, itemClickListener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         myAdapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(layoutManager);

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Note {
     @Expose
-    @SerializedName("id")
+    @SerializedName("id_seznam")
     private int id;
     @Expose
     @SerializedName("title")
