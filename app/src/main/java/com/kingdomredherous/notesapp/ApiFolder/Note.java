@@ -1,4 +1,4 @@
-package com.kingdomredherous.notesapp;
+package com.kingdomredherous.notesapp.ApiFolder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -19,6 +19,39 @@ public class Note {
     @Expose
     @SerializedName("message")
     private String message;
+    @Expose
+    @SerializedName("success")
+    private Boolean success;
+    @Expose
+    @SerializedName("id_user")
+    private int id_user;
+    @Expose
+    @SerializedName("jmeno")
+    private String jmeno;
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public String getJmeno() {
+        return jmeno;
+    }
+
+    public void setJmeno(String jmeno) {
+        this.jmeno = jmeno;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
 
     public String getMessage() {
         return message;

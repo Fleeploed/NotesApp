@@ -126,6 +126,7 @@
                 android:drawableEnd="@drawable/ic_lock"
                 android:drawableRight="@drawable/ic_lock"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPassword"
                 tools:targetApi="jelly_bean" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,6 +150,7 @@
                 android:drawableEnd="@drawable/ic_lock"
                 android:drawableRight="@drawable/ic_lock"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPassword"
                 tools:targetApi="jelly_bean" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -187,8 +189,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/poppinsmedium"
-            android:textColor="@color/colorTextInputLayout"
             android:text="@string/loginhere"
+            android:textColor="@color/colorTextInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"

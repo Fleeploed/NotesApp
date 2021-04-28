@@ -13,9 +13,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".EditorActivity"
+            android:name=".NoteFolder.EditorActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".MainActivity">
+        </activity>
+        <activity
+            android:name=".Login"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -24,13 +28,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".SignUp"
             android:theme="@style/Theme.Design.NoActionBar">
 
         </activity>
-        <activity
-            android:name=".SignUp"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
     </application>
 
 </manifest>

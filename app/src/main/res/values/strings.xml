@@ -5,19 +5,21 @@
     <string name="login">Login</string>
     <string name="signup">Registrace</string>
     <string name="prihlasit">Přihlásit se</string>
-    <string name="sign_in">Sign in</string>
+    <string name="sign_in">Přihlásit se</string>
     <string name="email">E-mail</string>
     <string name="password_again">Heslo ještě jednou</string>
     <string name="loginhere">Pokud už účet máte, stačí se přihlásit.</string>
     <string name="registrovat">Registrovat</string>
     <string name="createAccount">"Pokud ještě nemáte účet, tady si ho vytvoříte. "</string>
     <string name="my_notes">Můj seznam</string>
-    <string name="note_title">Note title</string>
+    <string name="note_title">Název poznámky</string>
     <string name="popis">Popis</string>
-    <string name="save">Save</string>
+    <string name="save">Uložit</string>
     <string name="pridat">Přidat</string>
     <string name="datum">datum</string>
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
-    <string name="update">Update</string>
+    <string name="edit">Upravit</string>
+    <string name="delete">Vymazat</string>
+    <string name="update">Aktualizace</string>
+    <string name="logout">Odhlásit se</string>
+    <string name="zobrazit_heslo">Zobrazit heslo</string>
 </resources>

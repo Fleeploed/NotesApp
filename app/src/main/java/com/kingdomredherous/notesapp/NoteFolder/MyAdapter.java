@@ -1,4 +1,4 @@
-package com.kingdomredherous.notesapp;
+package com.kingdomredherous.notesapp.NoteFolder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.kingdomredherous.notesapp.ApiFolder.Note;
+import com.kingdomredherous.notesapp.R;
 
 import java.util.List;
 
@@ -23,12 +26,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
         this.itemClickListener = itemClickListener;
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final View view;
         TextView tv_title, tv_popis, tv_datum;
         ItemClickListener itemClickListener;
         CardView cardView;
-        CustomViewHolder(View itemView,ItemClickListener itemClickListener) {
+
+        CustomViewHolder(View itemView, ItemClickListener itemClickListener) {
             super(itemView);
             view = itemView;
             tv_title = view.findViewById(R.id.title);
@@ -63,6 +67,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
     public int getItemCount() {
         return notes.size();
     }
+
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
